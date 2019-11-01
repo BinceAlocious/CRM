@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BASE</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="col-lg-12">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" style="margin-left:-20px;margin-right:-15px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'app1:index'%}" style="font-weight:bold;">HOME</a>
+        {%if user.is_authenticated%}
+        <a class="nav-item nav-link" href="{% url 'app1:admin'%}" style="font-weight:bold;">ADMIN</a>
+        <a class="nav-item nav-link" href="{%url 'app1:hr'%}" style="font-weight:bold;">HR</a>
+        <a class="nav-item nav-link" href="{%url 'app1:viewtra'%}" style="font-weight:bold;">TRAINER</a>
+        <a class="nav-item nav-link" href="{%url 'app1:stupg'%}" style="font-weight:bold;">STUDENT</a>
+          </div>
+  </div>
+        <form class="form-inline" style="float:right;" method="get" action="{%url 'app1:search'%}">
+        <input class="form-control mr-sm-2" type="text" name="q" value="{{request.GET.q}}" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <h5 class="text-muted mr-sm-2" style="margin:6px;">Logged in as {{user.username}}</h5>
+    <a class="btn btn-danger mr-sm-2" href="{%url 'logout'%}" role="button">Log Out</a>
+    {%endif%}
+</nav>
+</div>
+<div class="container-fluid">
+    {% block body_block%}
+
+
+
+    {%endblock%}
+</div>
+</body>
+</html>

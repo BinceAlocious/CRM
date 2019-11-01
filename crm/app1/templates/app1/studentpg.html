@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "app1/base.html"%}
+{%load staticfiles%}
+    {% block body_block%}
+<title>STUDENT PAGE</title>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active">STUDENT</a>
+    {%if form%}
+    <div class="jumbotron">
+        <img src="{% static 'images/loginicon.jpg'%}" style="margin-bottom:20px;margin-left:80px;vertical-align: middle;width: 50px;height: 50px;border-radius: 50%;">
+
+    <form method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input class="btn btn-success" type="submit" value="Submit">
+    </form>
+    </div>
+    {%else%}
+  <a href="{%url 'app1:stutb'%}" class="list-group-item list-group-item-action"><i class="material-icons" style="font-size:36;vertical-align:bottom;">event</i>VIEW TIMETABLE</a>
+  <a href="{%url 'dsp:report' stu.Name%}" class="list-group-item list-group-item-action"><i class="material-icons" style="font-size:36;vertical-align:bottom;">add_comment</i>DAILY SESSION REPORT</a>
+    {%endif%}
+</div>
+{%endblock%}ml>

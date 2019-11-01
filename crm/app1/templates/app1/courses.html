@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends "app1/base.html"%}
+    {% block body_block%}
+    <title>COURSES</title>
+<div class="list-group">
+    {%for rec in obj%}
+  <a href="{%url 'app1:vbatch' rec.Course_Name%}" class="list-group-item list-group-item-action">{{rec}}</a>
+    {%endfor%}
+</div>
+{%endblock%}
+

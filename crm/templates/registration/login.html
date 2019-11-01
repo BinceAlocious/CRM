@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{%extends 'app1/base.html'%}
+{%load staticfiles%}
+{%block body_block%}
+<div class="jumbotron">
+    <img src="{% static 'images/loginicon.jpg'%}" style="margin-bottom:20px;margin-left:80px;vertical-align: middle;width: 50px;height: 50px;border-radius: 50%;">
+    <form method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input class="btn btn-success" type="submit" value="Log In">
+    </form>
+</div>
+{%endblock%}

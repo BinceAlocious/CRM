@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block body_block%}
+<table class="table table-dark">
+  <thead>
+    <tr>
+        <th scope="col">DATE</th>
+        <th scope="col">BATCH CODE</th>
+        <th scope="col">STARTING TIME</th>
+        <th scope="col">END TIME</th>
+        <th scope="col">CLASS ROOM</th>
+    </tr>
+  </thead>
+  <tbody>
+{%for i in records%}
+<tr>
+    <td scope="col">{{i.Date}}</td>
+    <td scope="col">{{i.Select_Batch}}</td>
+    <td scope="col">{{i.Start_Time}}</td>
+    <td scope="col">{{i.End_Time}}</td>
+    <td scope="col">{{i.Class_Room}}</td>
+
+</tr>
+{%endfor%}
+  </tbody>
+</table>
+<a class="btn btn-danger" href="{%url 'timetable:end'%}" role="button">End Session</a>
+<div class="float-right">
+    <a class="btn btn-success" href="{%url 'timetable:toapprove'%}" role="button">Request Confirmation from Admin</a>
+</div>
+    {%endblock%}

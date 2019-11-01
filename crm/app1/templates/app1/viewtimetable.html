@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{%extends 'app1/base.html'%}
+{%block body_block%}
+<div class="jumbotron">
+    {%if records%}
+<table class="table table-dark">
+  <thead>
+    <tr>
+        <th scope="col">DATE</th>
+        <th scope="col">BATCH CODE</th>
+        <th scope="col">STARTING TIME</th>
+        <th scope="col">END TIME</th>
+        <th scope="col">CLASS ROOM</th>
+    </tr>
+  </thead>
+  <tbody>
+{%for i in records%}
+<tr>
+    <td scope="col">{{i.Date}}</td>
+    <td scope="col">{{i.Select_Batch}}</td>
+    <td scope="col">{{i.Start_Time}}</td>
+    <td scope="col">{{i.End_Time}}</td>
+    <td scope="col">{{i.Class_Room}}</td>
+
+</tr>
+{%endfor%}
+  </tbody>
+</table>
+    {%else%}
+    <h2 class="display-4">No TimeTable Available</h2>
+    {%endif%}
+</div>
+    {%endblock%}

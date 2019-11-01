@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{%extends 'app1/base.html'%}
+{%block body_block%}
+<div class="jumbotron">
+{%if user.is_authenticated%}
+    <h2 class="display-4">Already Logged In</h2>
+    <a class="btn btn-danger" href="{%url 'app1:admin'%}" role="button">Admin</a>
+    {%else%}
+    <h2 class="display-4">Please Log In to Continue</h2>
+    <table>
+        <tr>
+            <td><a class="btn btn-primary" href="{%url 'login'%}" role="button">Log In</a></td>
+        </tr>
+    </table>
+    {%endif%}
+</div>
+  {%endblock%}

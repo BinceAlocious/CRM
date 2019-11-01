@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends "app1/base.html"%}
+{%load staticfiles%}
+    {% block body_block%}
+<style>
+.ex1 {
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 25px;
+  color:grey;
+  font-weight:bold;
+}
+.jumbotron{
+    background-image:url(static/images/blur.jpg);
+        background-size: cover;
+        height: 100%;
+        margin-right:-15px;
+        margin-left:-15px;
+        margin-bottom:-15px;
+
+
+}
+.card-img-top{
+    width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.card-text{
+    font-weight:bold;
+    text-align:center;
+}
+</style>
+<div class="jumbotron">
+<h2 class="ex1">Log In as:</h2>
+            <div class="card-deck">
+    <div class="card bg-success">
+        <a href="{%url 'app1:home'%}"><img src="{% static 'images/adminimg.jpg'%}" class="card-img-top" style="margin-top:40px;" alt="..."></a>
+    <div class="card-body">
+    <p class="card-text" style="margin-top:35px;">Admin</p>
+    </div>
+    </div>
+    <div class="card bg-info">
+        <a href="{%url 'app1:hr'%}"><img src="{% static 'images/hr2.jpg'%}" class="card-img-top" alt="..."></a>
+  <div class="card-body">
+    <p class="card-text" style="margin-top:-15px;">HR</p>
+    </div>
+        </div>
+    <div class="card bg-info">
+        <a href="{%url 'app1:trapg'%}"><img src="{% static 'images/trainer.jpg'%}" style="margin-top:40px;" class="card-img-top" alt="..."></a>
+  <div class="card-body">
+    <p class="card-text" style="margin-top:85px;">Trainer</p>
+  </div>
+    </div>
+        <div class="card bg-info">
+        <a href="{%url 'app1:stupg'%}"><img src="{% static 'images/student.jpg'%}" class="card-img-top" alt="..."></a>
+  <div class="card-body">
+    <p class="card-text" style="margin-top:0px;">Student</p>
+  </div>
+      </div>
+    </div>
+{%endblock%}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block body_block%}
+<form method="post" id="NewUser" data-cls-url="{% url 'timetable:getdrop' %}">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" value="Submit">
+</form>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div style="margin:20px;text-align:center;">
+<a class="btn btn-success" href="{%url 'timetable:view'%}" role="button">View Table</a>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+  $("#id_Start_Time").change(function () {
+      var url = $("#NewUser").attr("data-cls-url");
+      var Start_TimeId = $(this).val();
+    $("#id_End_Time").change(function () {
+      var url = $("#NewUser").attr("data-cls-url");
+      var End_TimeId = $(this).val();
+       $.ajax({
+        url: url,
+        data: {
+          'Start_Time': Start_TimeId,
+          'End_Time': End_TimeId
+        },
+        success: function (data) {
+          $("#id_Class_Room").html(data);
+        }
+      });
+    });
+     });
+  </script>
+{%endblock%}

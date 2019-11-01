@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "app1/base.html"%}
+    {% block body_block%}
+    <title>ADD Course</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+.ex1 {
+  margin-bottom: 25px;
+  color:grey;
+  font-weight:bold;
+}
+</style>
+<div class="jumbotron">
+    <blockquote class="blockquote text-center">
+<h1 class="ex1">COURSE DETAILS</h1>
+    </blockquote>
+<form method="post">
+    {%csrf_token%}
+    {{reg.as_p}}
+    <input type="submit" value="Submit">
+</form>
+<div class="container">
+   <table class="table">
+       <thead>
+    <tr>
+      <th scope="col">COURSE</th>
+    </tr>
+  </thead>
+            <tbody>
+        {%for rec in cr%}
+        <tr scope="row">
+            <td>{{rec}}</td>
+            <td><a class="btn btn-success" href="{%url 'app1:edit' rec.id%}" role="button">EDIT</a></td>
+            <td><a class="btn btn-danger" href="{%url 'app1:delete' rec.id%}" role="button">DELETE</a></td>
+        </tr>
+        {%endfor%}
+            </tbody>
+    </table>
+</div>
+</div>
+{%endblock%}

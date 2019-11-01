@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Drop</title>
+</head>
+<body>
+<option value="">---------</option>
+{% for i in cls %}
+<option value="{{ i.pk }}">{{ i.Class_Name }}</option>
+{% endfor %}
+</body>
+</html>
